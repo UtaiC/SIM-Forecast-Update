@@ -1,12 +1,12 @@
 import streamlit as st
 import pandas as pd
-from sklearn import datasets
-from sklearn.ensemble import RandomForestClassifier
+#from sklearn import datasets
+#from sklearn.ensemble import RandomForestClassifier
 import numpy as np
 import matplotlib.pyplot as plt
 plt.style.use('seaborn')
 import math
-from matplotlib.ticker import FuncFormatter
+#from matplotlib.ticker import FuncFormatter
 import ipywidgets as widgets
 from PIL import Image
 
