@@ -8,12 +8,12 @@ import matplotlib.pyplot as plt
 #import math
 #from matplotlib.ticker import FuncFormatter
 #import ipywidgets as widgets
-#from PIL import Image
+from PIL import Image
 
 st.set_page_config(layout="wide")
 
-#Logo=Image.open('SIM-Logo.jpeg')
-#st.image(Logo,width=500)
+Logo=Image.open('SIM-Logo.jpeg')
+st.image(Logo,width=500)
 
 FC=pd.read_excel('Forecast_W46.xlsx')
 FC.set_index('Part_No',inplace=True)
