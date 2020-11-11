@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
+import altair as alt
 
 st.set_page_config(layout="wide")
 
@@ -19,9 +20,6 @@ st.subheader('WeeklyForecast Update')
 
 FC['Total-20']=(FC['WK45']+FC['WK46']+FC['WK47']+FC['WK48']+FC['WK49']+FC['WK50']+FC['WK51']+FC['WK52'])
 FCall=FC[['WK45','WK46','WK47','WK48','WK49','WK50','WK51','WK52']]
-CFtop10=FCall.nlargest(20,'WK45')
-CFtop10["G-TT"] = CFtop10.sum(axis=1)
-
 FCm=pd.merge(FC,db[['PartNo','Part_No','Type','HDMC']],on='Part_No',how='right')
 FCm.set_index('PartNo',inplace=True)
 
@@ -60,7 +58,7 @@ st.bar_chart(Show_Part2)
 FCm=pd.merge(FC,db[['PartNo','Part_No','Type','HDMC','Price']],on='Part_No',how='right')
 FCm.set_index('HDMC',inplace=True)
 
-selected_HDMC = st.sidebar.multiselect('Select HDMC',['650T','400T','350T-02','350T-01'],default=['650T','400T'],)
+selected_HDMC = st.sidebar.multiselect('Select HDMC',['650T','400T','350T-02','350T-01','NYS'],default=['650T','400T'],)
 Show_HDMC=FCm.loc[selected_HDMC][['PartNo','WK46','WK47']]
 Show_HDMC['Total']=Show_HDMC.sum(axis=1)
 Show_HDMC=Show_HDMC.fillna(0)
@@ -76,3 +74,7 @@ Show_HDMC_SUM = Show_HDMC.sum()[['WK46', 'WK47', 'Total']]
 st.table(Show_HDMC_SUM)
 
 st.success('End of Report')
+
+
+
+
