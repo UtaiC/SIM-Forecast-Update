@@ -25,7 +25,7 @@ FCm.set_index('PartNo',inplace=True)
 
 st.subheader('The Week Selected Forecast Volumes')
 
-selected_Week = st.sidebar.multiselect('Select Weekly Forecast', ['WK45','WK46','WK47','WK48','WK49','WK50','WK51','WK52'],default=['WK46','WK47'],)
+selected_Week = st.sidebar.multiselect('Select Weekly Forecast', ['WK45','WK46','WK47','WK48','WK49','WK50','WK51','WK52'],default=['WK47','WK48'],)
 
 Show_Week=FCm[selected_Week].fillna(0)
 
@@ -66,11 +66,11 @@ Show_HDMC=Show_HDMC[Show_HDMC['Total']>0]
 
 st.subheader('Sort Forecast by HDMC Selected')
 st.write(Show_HDMC)
-Show_HDMC_SUM2=FCm.loc[selected_HDMC][['WK46','WK47']]
+Show_HDMC_SUM2=FCm.loc[selected_HDMC][['WK48','WK49']]
 st.bar_chart(Show_HDMC_SUM2)
 
 st.write('The SUM of Selected HDMC')
-Show_HDMC_SUM = Show_HDMC.sum()[['WK46', 'WK47', 'Total']]
+Show_HDMC_SUM = Show_HDMC.sum()[['WK47', 'WK48', 'Total']]
 st.table(Show_HDMC_SUM)
 
 st.success('End of Report')
