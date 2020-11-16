@@ -74,7 +74,3 @@ Show_HDMC_SUM = Show_HDMC.sum()[['WK46', 'WK47', 'Total']]
 st.table(Show_HDMC_SUM)
 
 st.success('End of Report')
-
-
-
-
