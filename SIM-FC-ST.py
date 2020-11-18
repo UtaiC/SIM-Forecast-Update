@@ -59,7 +59,7 @@ FCm=pd.merge(FC,db[['PartNo','Part_No','Type','HDMC','Price']],on='Part_No',how=
 FCm.set_index('HDMC',inplace=True)
 
 selected_HDMC = st.sidebar.multiselect('Select HDMC',['650T','400T','350T-02','350T-01','NYS'],default=['650T','400T'],)
-Show_HDMC=FCm.loc[selected_HDMC][['PartNo','WK46','WK47']]
+Show_HDMC=FCm.loc[selected_HDMC][['PartNo','WK47','WK48','WK49','WK50']]
 Show_HDMC['Total']=Show_HDMC.sum(axis=1)
 Show_HDMC=Show_HDMC.fillna(0)
 Show_HDMC=Show_HDMC[Show_HDMC['Total']>0]
