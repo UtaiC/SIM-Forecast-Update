@@ -66,7 +66,7 @@ Show_HDMC=Show_HDMC[Show_HDMC['Total']>0]
 
 st.subheader('Sort Forecast by HDMC Selected')
 st.write(Show_HDMC)
-Show_HDMC_SUM2=FCm.loc[selected_HDMC][['WK48','WK49']]
+Show_HDMC_SUM2=FCm.loc[selected_HDMC][['WK47','WK48']]
 st.bar_chart(Show_HDMC_SUM2)
 
 st.write('The SUM of Selected HDMC')
