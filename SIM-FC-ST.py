@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 Logo=Image.open('SIM-Logo.jpeg')
 st.image(Logo,width=500)
 
-FC=pd.read_excel('Forecast_W47.xlsx')
+FC=pd.read_excel('Forecast_W48.xlsx')
 FC.set_index('Part_No',inplace=True)
 
 db=pd.read_excel('Database.xlsx','DB')
@@ -25,7 +25,7 @@ FCm.set_index('PartNo',inplace=True)
 
 st.subheader('The Week Selected Forecast Volumes')
 
-selected_Week = st.sidebar.multiselect('Select Weekly Forecast', ['WK45','WK46','WK47','WK48','WK49','WK50','WK51','WK52'],default=['WK47','WK48'],)
+selected_Week = st.sidebar.multiselect('Select Weekly Forecast', ['BO','WK45','WK46','WK47','WK48','WK49','WK50','WK51','WK52'],default=['WK48','WK49'],)
 
 Show_Week=FCm[selected_Week].fillna(0)
 
@@ -59,18 +59,18 @@ FCm=pd.merge(FC,db[['PartNo','Part_No','Type','HDMC','Price']],on='Part_No',how=
 FCm.set_index('HDMC',inplace=True)
 
 selected_HDMC = st.sidebar.multiselect('Select HDMC',['650T','400T','350T-02','350T-01','NYS'],default=['650T','400T'],)
-Show_HDMC=FCm.loc[selected_HDMC][['PartNo','WK47','WK48','WK49','WK50']]
+Show_HDMC=FCm.loc[selected_HDMC][['PartNo','WK48','WK49']]
 Show_HDMC['Total']=Show_HDMC.sum(axis=1)
 Show_HDMC=Show_HDMC.fillna(0)
 Show_HDMC=Show_HDMC[Show_HDMC['Total']>0]
 
 st.subheader('Sort Forecast by HDMC Selected')
 st.write(Show_HDMC)
-Show_HDMC_SUM2=FCm.loc[selected_HDMC][['WK47','WK48']]
+Show_HDMC_SUM2=FCm.loc[selected_HDMC][['WK48','WK49']]
 st.bar_chart(Show_HDMC_SUM2)
 
 st.write('The SUM of Selected HDMC')
-Show_HDMC_SUM = Show_HDMC.sum()[['WK47', 'WK48', 'Total']]
+Show_HDMC_SUM = Show_HDMC.sum()[['WK48', 'WK49', 'Total']]
 st.table(Show_HDMC_SUM)
 
 st.success('End of Report')
