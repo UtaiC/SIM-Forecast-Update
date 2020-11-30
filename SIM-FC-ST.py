@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 Logo=Image.open('SIM-Logo.jpeg')
 st.image(Logo,width=500)
 
-FC=pd.read_excel('Forecast_W48.xlsx')
+FC=pd.read_excel('Forecast_W49.xlsx')
 FC.set_index('Part_No',inplace=True)
 
 db=pd.read_excel('Database.xlsx','DB')
