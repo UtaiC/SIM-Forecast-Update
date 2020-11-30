@@ -25,7 +25,7 @@ FCm.set_index('PartNo',inplace=True)
 
 st.subheader('The Week Selected Forecast Volumes')
 
-selected_Week = st.sidebar.multiselect('Select Weekly Forecast', ['BO','WK45','WK46','WK47','WK48','WK49','WK50','WK51','WK52'],default=['WK48','WK49'],)
+selected_Week = st.sidebar.multiselect('Select Weekly Forecast', ['BO','WK45','WK46','WK47','WK48','WK49','WK50','WK51','WK52'],default=['WK49','WK50'],)
 
 Show_Week=FCm[selected_Week].fillna(0)
 
