@@ -59,18 +59,18 @@ FCm=pd.merge(FC,db[['PartNo','Part_No','Type','HDMC','Price']],on='Part_No',how=
 FCm.set_index('HDMC',inplace=True)
 
 selected_HDMC = st.sidebar.multiselect('Select HDMC',['650T','400T','350T-02','350T-01','NYS'],default=['650T','400T'],)
-Show_HDMC=FCm.loc[selected_HDMC][['PartNo','WK48','WK49']]
+Show_HDMC=FCm.loc[selected_HDMC][['PartNo','WK49','WK50']]
 Show_HDMC['Total']=Show_HDMC.sum(axis=1)
 Show_HDMC=Show_HDMC.fillna(0)
 Show_HDMC=Show_HDMC[Show_HDMC['Total']>0]
 
 st.subheader('Sort Forecast by HDMC Selected')
 st.write(Show_HDMC)
-Show_HDMC_SUM2=FCm.loc[selected_HDMC][['WK48','WK49']]
+Show_HDMC_SUM2=FCm.loc[selected_HDMC][['WK49','WK50']]
 st.bar_chart(Show_HDMC_SUM2)
 
 st.write('The SUM of Selected HDMC')
-Show_HDMC_SUM = Show_HDMC.sum()[['WK48', 'WK49', 'Total']]
+Show_HDMC_SUM = Show_HDMC.sum()[['WK49', 'WK50', 'Total']]
 st.table(Show_HDMC_SUM)
 
 st.success('End of Report')
